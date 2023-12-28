@@ -1,4 +1,4 @@
-import { post } from "../api/apiService";
+import { login, post } from "../api/apiService";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import { useForm } from "react-hook-form";
@@ -8,8 +8,7 @@ const LoginForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      await post(data);
-      window.location.pathname = "/";
+      await login(data);
     } catch (error) {
       console.error("Error logging in:", error);
     }

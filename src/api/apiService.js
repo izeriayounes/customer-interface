@@ -76,11 +76,9 @@ const remove = async (route) => {
 
 const login = async (creds) => {
   try {
-    const response = await axiosInstance.post("/Customers/login", creds);
-    const token = response.data.token;
-    const userId = response.data.customerId;
+    const response = await axiosInstance.post("/authenticate/login", creds);
+    const token = response.token;
     localStorage.setItem("token", token);
-    localStorage.setItem("userId", userId);
     setAuthToken(token);
     return response.data;
   } catch (error) {
